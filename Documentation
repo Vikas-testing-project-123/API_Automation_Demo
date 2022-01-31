@@ -1,0 +1,11 @@
+Requirements and Pre requists
+
+Pre requists: Python, Pycharm
+Packages: Jsonpath, json, openpyxl, requests
+
+1. Firstly create a empty list with name testcases
+2. Read excel for the particular testcases and return a list with specific test data
+3. Then read the json file and replace the json data as per the data from the testdata list
+4. Then hit the API using the request method of requests package
+5. Check if the actual response is matched with the expected response in the excel sheet
+6. Write the status of the test case is pass or fail in the excel file
