@@ -74,9 +74,9 @@ def test_checkDomain():
         print(response.status_code)
         assert response.status_code == int(testData[1])
         if response.status_code == int(testData[1]):
-            write_Excel(excelPath, "CheckDomain", test, "Pass")
+            write_Excel(excelPath, "CheckDomain", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "CheckDomain", test, "Fail")
+            write_Excel(excelPath, "CheckDomain", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

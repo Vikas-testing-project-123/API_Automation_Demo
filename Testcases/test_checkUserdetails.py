@@ -47,15 +47,15 @@ def write_Excel(excelPath, SheetName, Scenario, status):
             i += 1
     workBook.save(excelPath)
 
-def test_checkUser():
-    url = "http://bam.kockpit.in:4001/checkUser"
+def test_checkUserdetails():
+    url = "http://bam.kockpit.in:4001/userDetails"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "All Blank",
                  "Invalid Company Domain", "Invalid UserId", "All Invalid"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
-        testData = Read_Excel(excelPath, "CheckUser", test)
+        testData = Read_Excel(excelPath, "CheckUserDetails", test)
         i = 0
         while i < len(testData):
             if testData[i] == "Blank":
@@ -63,7 +63,7 @@ def test_checkUser():
             i += 1
 
         print("Final TestData" + str(testData))
-        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\Check_User.json', 'r')  # open the file in read only mode
+        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\CheckUser_details.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
         json_input = update_content(json_input, "CompanyDomain", testData[0])
@@ -75,9 +75,9 @@ def test_checkUser():
         print(response.status_code)
         assert response.status_code == int(testData[2])
         if response.status_code == int(testData[2]):
-            write_Excel(excelPath, "CheckUser", test, "Pass:- "+response.text)
+            write_Excel(excelPath, "CheckUserDetails", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "CheckUser", test, "Fail-"+response.text)
+            write_Excel(excelPath, "CheckUserDetails", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

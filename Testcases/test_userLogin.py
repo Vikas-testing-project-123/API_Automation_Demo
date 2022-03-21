@@ -75,9 +75,9 @@ def test_UserLogin():
         print(response.status_code)
         assert response.status_code == int(testData[3])
         if response.status_code == int(testData[3]):
-            write_Excel(excelPath, "User_Login", test, "Pass")
+            write_Excel(excelPath, "User_Login", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "User_Login", test, "Fail")
+            write_Excel(excelPath, "User_Login", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 
