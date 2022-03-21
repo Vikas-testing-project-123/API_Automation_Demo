@@ -1,6 +1,5 @@
 import requests
 import json
-import jsonpath
 import openpyxl
 
 # Read_Excel method is used to read a excel file
@@ -48,7 +47,7 @@ def write_Excel(excelPath, SheetName, Scenario, status):
     workBook.save(excelPath)
 
 def test_UserLogin():
-    url = "http://20.204.24.134:4001/userLogin"
+    url = "http://bam.kockpit.in:4001/userLogin"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "Blank Password", "All Blank",
                  "Invalid Company Domain", "Invalid UserId", "Invalid Password", "All Invalid"]

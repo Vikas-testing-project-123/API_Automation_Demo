@@ -3,7 +3,7 @@ import json
 import jsonpath
 import openpyxl
 
-url = "http://20.204.24.134:4001/userLogin"
+url = "http://bam.kockpit.in:4001/userLogin"
 def update_content(jsonBody, param, parameter_value):
     return jsonBody.replace("%%"+ param + "%%", parameter_value)
 

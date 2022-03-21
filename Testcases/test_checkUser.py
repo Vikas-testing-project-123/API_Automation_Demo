@@ -47,15 +47,15 @@ def write_Excel(excelPath, SheetName, Scenario, status):
             i += 1
     workBook.save(excelPath)
 
-def test_checkDomain():
-    url = "http://bam.kockpit.in:4001/checkCompanyDomain"
+def test_checkUser():
+    url = "http://bam.kockpit.in:4001/checkUser"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank Company Domain","Invalid Company Domain"]
-
+    testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "All Blank",
+                 "Invalid Company Domain", "Invalid UserId", "All Invalid"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
-        testData = Read_Excel(excelPath, "CheckDomain", test)
+        testData = Read_Excel(excelPath, "CheckUser", test)
         i = 0
         while i < len(testData):
             if testData[i] == "Blank":
@@ -63,20 +63,21 @@ def test_checkDomain():
             i += 1
 
         print("Final TestData" + str(testData))
-        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\Check_Domain.json', 'r')  # open the file in read only mode
+        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\Check_User.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
         json_input = update_content(json_input, "CompanyDomain", testData[0])
+        json_input = update_content(json_input, "UserId", testData[1])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        assert response.status_code == int(testData[1])
-        if response.status_code == int(testData[1]):
-            write_Excel(excelPath, "CheckDomain", test, "Pass")
+        assert response.status_code == int(testData[2])
+        if response.status_code == int(testData[2]):
+            write_Excel(excelPath, "CheckUser", test, "Pass")
         else:
-            write_Excel(excelPath, "CheckDomain", test, "Fail")
+            write_Excel(excelPath, "CheckUser", test, "Fail")
 
         # Get the values of the json file provided and validate the fields
 
