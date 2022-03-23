@@ -47,15 +47,15 @@ def write_Excel(excelPath, SheetName, Scenario, status):
             i += 1
     workBook.save(excelPath)
 
-def test_checkDomain():
-    url = "http://bam.kockpit.in:4001/checkCompanyDomain"
+def test_getVersion():
+    url = "http://bam.kockpit.in:4001/getVersion"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank Company Domain","Invalid Company Domain"]
 
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
-        testData = Read_Excel(excelPath, "CheckDomain", test)
+        testData = Read_Excel(excelPath, "getVersion", test)
         i = 0
         while i < len(testData):
             if testData[i] == "Blank":
@@ -63,7 +63,7 @@ def test_checkDomain():
             i += 1
 
         print("Final TestData" + str(testData))
-        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\Check_Domain.json', 'r')  # open the file in read only mode
+        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\getVersion.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
         json_input = update_content(json_input, "CompanyDomain", testData[0])
@@ -74,9 +74,9 @@ def test_checkDomain():
         print(response.status_code)
         # assert response.status_code == int(testData[1])
         if response.status_code == int(testData[1]):
-            write_Excel(excelPath, "CheckDomain", test, "Pass:- "+response.text)
+            write_Excel(excelPath, "getVersion", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "CheckDomain", test, "Fail-"+response.text)
+            write_Excel(excelPath, "getVersion", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

@@ -73,7 +73,7 @@ def test_checkUser():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        assert response.status_code == int(testData[2])
+        # assert response.status_code == int(testData[2])
         if response.status_code == int(testData[2]):
             write_Excel(excelPath, "CheckUser", test, "Pass:- "+response.text)
         else:

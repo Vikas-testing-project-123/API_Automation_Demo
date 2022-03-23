@@ -1,0 +1,6 @@
+{
+    "UserId": "%%UserId%%",
+    "Level":  "%%Level%%",
+	"Type": "%%Type%%",
+    "FiscalYear": "%%FiscalYear%%"
+}
