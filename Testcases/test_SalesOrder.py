@@ -81,7 +81,7 @@ def test_SalesOrder():
 
         # Get the values of the json file provided and validate the fields
 
-        # assert response.status_code == 200
+        #assert response.status_code == 200
         print(response.text)  # Content on the status conde
         # print(response.headers.get("X-Powered-By")) # print a specific key value from the headers.
         print("*************************Test End******************************")

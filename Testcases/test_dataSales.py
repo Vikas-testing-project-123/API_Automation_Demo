@@ -76,7 +76,7 @@ def test_dataSales():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        # assert response.status_code == int(testData[5])
+        #assert response.status_code == int(testData[5])
         if response.status_code == int(testData[5]):
             write_Excel(excelPath, "dataSales", test, "Pass:- "+response.text)
         else:

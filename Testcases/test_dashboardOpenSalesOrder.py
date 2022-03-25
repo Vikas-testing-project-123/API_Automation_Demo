@@ -46,16 +46,16 @@ def write_Excel(excelPath, SheetName, Scenario, status):
             i += 1
     workBook.save(excelPath)
 
-def test_Sales():
-    url = "http://bam.kockpit.in:4001/Sales"
+def test_dashboardOpenSalesOrder():
+    url = "http://bam.kockpit.in:4001/dashboard/openSalesOrder"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank UserId", "Blank Level", "Blank Type", "All Blank",
-                 "All Invalid", "Invalid UserId", "Invalid Level", "Invalid Type", "Blank fiscal year",
-                 "Invalid fiscal year"]
+    testcases = ["All valid parameter", "Blank UserId", "Blank Level", "All Blank",
+                 "All Invalid", "Invalid UserId", "Invalid Level",
+                 "All valid with User id Admin and Level L1-L3"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
-        testData = Read_Excel(excelPath, "Sales", test)
+        testData = Read_Excel(excelPath, "dashboardOpenSalesOrder", test)
         i = 0
         while i < len(testData):
             if testData[i] == "Blank":
@@ -63,23 +63,21 @@ def test_Sales():
             i += 1
 
         print("Final TestData" + str(testData))
-        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\Sales.json', 'r')  # open the file in read only mode
+        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\dashboardOpenSalesOrder.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
         json_input = update_content(json_input, "UserId", testData[0])
         json_input = update_content(json_input, "Level", testData[1])
-        json_input = update_content(json_input, "Type", testData[2])
-        json_input = update_content(json_input, "FiscalYear", testData[3])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[4])
-        if response.status_code == int(testData[4]):
-            write_Excel(excelPath, "Sales", test, "Pass:- "+response.text)
+        #assert response.status_code == int(testData[2])
+        if response.status_code == int(testData[2]):
+            write_Excel(excelPath, "dashboardOpenSalesOrder", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "Sales", test, "Fail-"+response.text)
+            write_Excel(excelPath, "dashboardOpenSalesOrder", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

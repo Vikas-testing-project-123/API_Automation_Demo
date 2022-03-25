@@ -1,0 +1,6 @@
+{
+    "CompanyDomain": "%%CompanyDomain%%",
+    "UserId": "%%UserId%%",
+    "Level":  "%%Level%%",
+    "Year":  "%%Year%%"
+}
