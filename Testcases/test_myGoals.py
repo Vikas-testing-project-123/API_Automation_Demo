@@ -73,7 +73,7 @@ def test_myGoals():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[3])
+        assert response.status_code == int(testData[3])
         if response.status_code == int(testData[3]):
             write_Excel(excelPath, "myGoals", test, "Pass:- "+response.text)
         else:

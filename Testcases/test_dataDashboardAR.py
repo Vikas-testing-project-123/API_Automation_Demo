@@ -50,8 +50,7 @@ def test_dataDashboardAR():
     url = "http://bam.kockpit.in:4001/data/dashboard/AR"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "Blank Level", "All Blank",
-                 "All Invalid", "Invalid Company Domain", "Invalid UserId", "Invalid Level",
-                 "All valid with User id Admin and Level L1-L3"]
+                 "All Invalid", "Invalid Company Domain", "Invalid UserId", "Invalid Level "]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
@@ -74,7 +73,7 @@ def test_dataDashboardAR():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[3])
+        assert response.status_code == int(testData[3])
         if response.status_code == int(testData[3]):
             write_Excel(excelPath, "dataDashboardAR", test, "Pass:- "+response.text)
         else:

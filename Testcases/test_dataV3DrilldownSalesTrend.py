@@ -51,7 +51,7 @@ def test_dataV3DrilldownSalesTrend():
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank UserId", "Blank Level", "All Blank",
                  "All Invalid", "Invalid UserId", "Invalid Level", "Invalid Company Domain"
-                 , "Blank Company Domain"]
+                 , "Blank Company Domain", "Blank Year", "Invalid year"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
@@ -75,11 +75,11 @@ def test_dataV3DrilldownSalesTrend():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[4])
+        assert response.status_code == int(testData[4])
         if response.status_code == int(testData[4]):
             write_Excel(excelPath, "dataV3DrilldownSalesTrend", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "dataV3DrilldownSalesTrend", test, "Fail-"+response.text)
+               write_Excel(excelPath, "dataV3DrilldownSalesTrend", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

@@ -47,7 +47,7 @@ def write_Excel(excelPath, SheetName, Scenario, status):
     workBook.save(excelPath)
 
 def test_dataSales():
-    url = "http://bam.kockpit.in:4001/Sales"
+    url = "http://bam.kockpit.in:4001/data/Sales"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank UserId", "Blank Level", "Blank Type", "All Blank",
                  "All Invalid", "Invalid UserId", "Invalid Level", "Invalid Type", "Blank fiscal year",
@@ -66,7 +66,7 @@ def test_dataSales():
         file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\dataSales.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
-        json_input = update_content(json_input, "UserId", testData[0])
+        json_input = update_content(json_input, "CompanyDomain", testData[0])
         json_input = update_content(json_input, "UserId", testData[1])
         json_input = update_content(json_input, "Level", testData[2])
         json_input = update_content(json_input, "Type", testData[3])

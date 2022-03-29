@@ -72,7 +72,7 @@ def test_getVersion():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[1])
+        assert response.status_code == int(testData[1])
         if response.status_code == int(testData[1]):
             write_Excel(excelPath, "getVersion", test, "Pass:- "+response.text)
         else:

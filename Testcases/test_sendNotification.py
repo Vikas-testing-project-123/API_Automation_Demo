@@ -74,7 +74,7 @@ def test_sendNotification():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[4])
+        assert response.status_code == int(testData[4])
         if response.status_code == int(testData[4]):
             write_Excel(excelPath, "sendNotification", test, "Pass:- "+response.text)
         else:

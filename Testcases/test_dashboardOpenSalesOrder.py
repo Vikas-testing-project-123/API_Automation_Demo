@@ -50,8 +50,7 @@ def test_dashboardOpenSalesOrder():
     url = "http://bam.kockpit.in:4001/dashboard/openSalesOrder"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "Blank UserId", "Blank Level", "All Blank",
-                 "All Invalid", "Invalid UserId", "Invalid Level",
-                 "All valid with User id Admin and Level L1-L3"]
+                 "All Invalid", "Invalid UserId", "Invalid Level "]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
@@ -73,7 +72,7 @@ def test_dashboardOpenSalesOrder():
         # Make the post request with the json input
         response = requests.post(url, request_json)
         print(response.status_code)
-        #assert response.status_code == int(testData[2])
+        assert response.status_code == int(testData[2])
         if response.status_code == int(testData[2]):
             write_Excel(excelPath, "dashboardOpenSalesOrder", test, "Pass:- "+response.text)
         else:
