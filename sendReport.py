@@ -1,4 +1,6 @@
 import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
 server.login("testtt211999@gmail.com", "Vikash@1999")#you need to change the security settings to login in
