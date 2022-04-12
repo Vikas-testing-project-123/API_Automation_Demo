@@ -49,7 +49,8 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_dashboardAR():
     url = "http://bam.kockpit.in:4001/dashboard/AR"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank UserId", "Blank Level", "All Blank",
+    testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2", "All valid parameter L3",
+                 "Blank UserId", "Blank Level", "All Blank",
                  "All Invalid", "Invalid UserId", "Invalid Level "]
     testcases1 = ["All valid parameter"]
     for test in testcases:

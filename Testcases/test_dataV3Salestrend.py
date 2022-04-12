@@ -49,7 +49,8 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_dataV3Salestrend():
     url = "http://bam.kockpit.in:4001/data/V3/SalesTrend"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank UserId", "Blank Level", "All Blank",
+    testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2", "All valid parameter L3",
+                 "Blank UserId", "Blank Level", "All Blank",
                  "All Invalid", "Invalid UserId", "Invalid Level", "Invalid Company Domain"
                  , "Blank Company Domain"]
     testcases1 = ["All valid parameter"]

@@ -49,7 +49,8 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_myGoals():
     url = "http://bam.kockpit.in:4001/myGoals"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank Company Domain", "Blank EmpId", "All Blank",
+    testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2", "All valid parameter L3",
+                 "Blank Company Domain", "Blank EmpId", "All Blank",
                  "All Invalid", "Invalid Company Domain", "Invalid EmpId (Emp id has no validation)", "Blank Emplevel", "Invalid Emplevel"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
