@@ -1,5 +1,5 @@
 {
-    "EmpId": "%%EmpId%%",
-    "EmpLevel": "%%EmpLevel%%",
-	"CompanyDomain": "%%CompanyDomain%%"
+    "EId": "%%EId%%",
+    "ELevel": "%%ELevel%%",
+	"Domain": "%%Domain%%"
 }

@@ -2,6 +2,7 @@ import requests
 import json
 import jsonpath
 import openpyxl
+import baseUrlHeader
 
 # Read_Excel method is used to read a excel file
 def Read_Excel(excelPath, SheetName, Scenario):
@@ -48,7 +49,7 @@ def write_Excel(excelPath, SheetName, Scenario, status):
     workBook.save(excelPath)
 
 def test_setGoals():
-    url = "http://bam.kockpit.in:4001/set/goal"
+    url = baseUrlHeader.baseURL+"/set/goal"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "All valid parameter L2", "All valid parameter L3",
                  "Blank some sections","All Blank", "All Invalid", "Invalid ID, Setterid, Level, domain"]
@@ -67,28 +68,28 @@ def test_setGoals():
         file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\setGoal.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
-        json_input = update_content(json_input, "EmpId", testData[0])
-        json_input = update_content(json_input, "EmpLevel", testData[1])
-        json_input = update_content(json_input, "EmpName", testData[2])
-        json_input = update_content(json_input, "GoalSetterId", testData[3])
-        json_input = update_content(json_input, "GoalSetterLevel", testData[4])
-        json_input = update_content(json_input, "GoalSetterName", testData[5])
-        json_input = update_content(json_input, "GoalTarget", testData[6])
-        json_input = update_content(json_input, "GoalName", testData[7])
-        json_input = update_content(json_input, "GoalDescription", testData[8])
-        json_input = update_content(json_input, "PostingDate", testData[9])
-        json_input = update_content(json_input, "DueDate", testData[10])
-        json_input = update_content(json_input, "CompanyDomain", testData[11])
-        json_input = update_content(json_input, "IsGoalActive", testData[12])
-        json_input = update_content(json_input, "AmountAchieved", testData[13])
-        json_input = update_content(json_input, "ModuleName", testData[14])
-        json_input = update_content(json_input, "PageName", testData[15])
+        json_input = update_content(json_input, "EId", testData[0])
+        json_input = update_content(json_input, "ELevel", testData[1])
+        json_input = update_content(json_input, "EName", testData[2])
+        json_input = update_content(json_input, "GSId", testData[3])
+        json_input = update_content(json_input, "GSLevel", testData[4])
+        json_input = update_content(json_input, "GSName", testData[5])
+        json_input = update_content(json_input, "GT", testData[6])
+        json_input = update_content(json_input, "GName", testData[7])
+        json_input = update_content(json_input, "GD", testData[8])
+        json_input = update_content(json_input, "PDate", testData[9])
+        json_input = update_content(json_input, "DDate", testData[10])
+        json_input = update_content(json_input, "Domain", testData[11])
+        json_input = update_content(json_input, "IsGoal", testData[12])
+        json_input = update_content(json_input, "ACAmount", testData[13])
+        json_input = update_content(json_input, "Module", testData[14])
+        json_input = update_content(json_input, "Page", testData[15])
         json_input = update_content(json_input, "Code", testData[16])
         json_input = update_content(json_input, "KPI", testData[17])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
-        response = requests.post(url, request_json)
+        response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
         assert response.status_code == int(testData[18])
         if response.status_code == int(testData[18]):

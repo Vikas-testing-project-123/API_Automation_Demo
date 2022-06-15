@@ -1,0 +1,7 @@
+{
+    "UserId": "%%UserId%%",
+    "Domain": "%%Domain%%",
+    "CompanyName": "%%CompanyName%%",
+	"OfferingCategory": "%%OfferingCategory%%",
+    "Email": "%%Email%%"
+}

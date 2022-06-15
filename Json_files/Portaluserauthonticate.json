@@ -1,0 +1,6 @@
+{
+    "UserId": "%%UserId%%",
+    "Password": "%%Password%%",
+    "DeviceId": "%%DeviceId%%",
+    "Domain": "%%Domain%%"
+}

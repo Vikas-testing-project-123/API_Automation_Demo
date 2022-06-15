@@ -47,17 +47,15 @@ def write_Excel(excelPath, SheetName, Scenario, status):
             i += 1
     workBook.save(excelPath)
 
-def test_dataV3DrilldownSalesTrend():
-    url = baseUrlHeader.baseURL+"/data/V3/drilldown/SalesTrend"
+def test_runtimeSalesorder():
+    url = baseUrlHeader.baseURL+"/runTime/SalesOrder"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2",
-                 "All valid parameter L3", "Blank UserId", "Blank Level", "All Blank",
-                 "All Invalid", "Invalid UserId", "Invalid Level", "Invalid Company Domain"
-                 , "Blank Company Domain", "Blank Year", "Invalid year"]
+    testcases = ["All valid parameter", "Blank Company Domain","Invalid Company Domain"]
+
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
-        testData = Read_Excel(excelPath, "dataV3DrilldownSalesTrend", test)
+        testData = Read_Excel(excelPath, "runtimeSalesorder", test)
         i = 0
         while i < len(testData):
             if testData[i] == "Blank":
@@ -65,23 +63,20 @@ def test_dataV3DrilldownSalesTrend():
             i += 1
 
         print("Final TestData" + str(testData))
-        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\dataV3DrilldownSalesTrend.json', 'r')  # open the file in read only mode
+        file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\runtimeSalesorder.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
         json_input = update_content(json_input, "Domain", testData[0])
-        json_input = update_content(json_input, "UserId", testData[1])
-        json_input = update_content(json_input, "Level", testData[2])
-        json_input = update_content(json_input, "Year", testData[3])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
-        response = requests.post(url, request_json,headers=baseUrlHeader.headers)
+        response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
-        assert response.status_code == int(testData[4])
-        if response.status_code == int(testData[4]):
-            write_Excel(excelPath, "dataV3DrilldownSalesTrend", test, "Pass:- "+response.text)
+        assert response.status_code == int(testData[1])
+        if response.status_code == int(testData[1]):
+            write_Excel(excelPath, "runtimeSalesorder", test, "Pass:- "+response.text)
         else:
-               write_Excel(excelPath, "dataV3DrilldownSalesTrend", test, "Fail-"+response.text)
+            write_Excel(excelPath, "runtimeSalesorder", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

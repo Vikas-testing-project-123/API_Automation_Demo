@@ -1,4 +1,4 @@
 {
     "UserId": "%%UserId%%",
-    "Level":  "%%Level%%"
+    "Domain":  "%%Domain%%"
 }

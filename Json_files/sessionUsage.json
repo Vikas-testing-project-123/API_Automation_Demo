@@ -1,0 +1,11 @@
+{
+    "SessionId": "%%SessionId%%",
+    "SessionIn": "%%SessionIn%%",
+    "SessionOut": "%%SessionOut%%",
+	"Module": "%%Module%%",
+    "Page": "%%Page%%",
+    "Device": "%%Device%%",
+    "Platform": "%%Platform%%",
+    "Domain": "%%Domain%%",
+    "Version":"%%Version%%"
+}

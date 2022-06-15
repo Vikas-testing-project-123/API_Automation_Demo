@@ -1,6 +1,8 @@
 {
-    "CompanyDomain": "%%CompanyDomain%%",
+    "Domain": "%%Domain%%",
     "UserId": "%%UserId%%",
 	"Ttile": "%%Ttile%%",
-    "Body": "%%Body%%"
+    "Body": "%%Body%%",
+    "Module": "%%Module%%",
+    "Screen": "%%Screen%%"
 }

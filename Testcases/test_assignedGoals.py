@@ -1,6 +1,7 @@
 import requests
 import json
 import openpyxl
+import baseUrlHeader
 
 # Read_Excel method is used to read a excel file
 def Read_Excel(excelPath, SheetName, Scenario):
@@ -47,7 +48,8 @@ def write_Excel(excelPath, SheetName, Scenario, status):
     workBook.save(excelPath)
 
 def test_assignedGoals():
-    url = "http://bam.kockpit.in:4001/assignedGoals"
+
+    url = baseUrlHeader.baseURL+"/assignedGoals"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter","All valid parameter L1", "All valid parameter L2", "All valid parameter L3",
                  "Blank Company Domain", "Blank EmpId", "All Blank",
@@ -66,23 +68,27 @@ def test_assignedGoals():
         file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\assignedGoals.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
-        json_input = update_content(json_input, "EmpId", testData[0])
-        json_input = update_content(json_input, "EmpLevel", testData[1])
-        json_input = update_content(json_input, "CompanyDomain", testData[2])
+        json_input = update_content(json_input, "EId", testData[0])
+        json_input = update_content(json_input, "ELevel", testData[1])
+        json_input = update_content(json_input, "Domain", testData[2])
+        # json_input = update_content(json_input, "Token", testData[3])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
-        response = requests.post(url, request_json)
+
+        #headers= {"Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJEb21haW4iOiJUQTAwNzEiLCJpYXQiOjE2NTM5MDM1MTAsImV4cCI6MTY1NjQ5NTUxMH0.CznWjmqxX06Ja0P39MD43Mypk5KHoL5kcK42C3sihik"}
+        response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
         assert response.status_code == int(testData[3])
         if response.status_code == int(testData[3]):
-            write_Excel(excelPath, "assignedGoals", test, "Pass:- "+response.text)
+            write_Excel(excelPath, "assignedGoals", test, "Pass:- " +response.text)
         else:
-            write_Excel(excelPath, "assignedGoals", test, "Fail-"+response.text)
+            write_Excel(excelPath, "assignedGoals", test, "Fail-"+ response.text)
 
         # Get the values of the json file provided and validate the fields
 
         # assert response.status_code == 200
         print(response.text)  # Content on the status conde
+        print(response.status_code)
         # print(response.headers.get("X-Powered-By")) # print a specific key value from the headers.
         print("*************************Test End******************************")

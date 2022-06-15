@@ -1,5 +1,5 @@
 {
-    "CompanyDomain": "%%CompanyDomain%%",
+    "Domain": "%%Domain%%",
     "UserId": "%%UserId%%",
     "Level":  "%%Level%%"
 }

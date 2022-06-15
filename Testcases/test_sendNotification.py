@@ -1,7 +1,7 @@
 # import requests
 # import json
 # import openpyxl
-#
+# import baseUrlHeader
 # # Read_Excel method is used to read a excel file
 # def Read_Excel(excelPath, SheetName, Scenario):
 #         workBook = openpyxl.load_workbook(excelPath)
@@ -47,10 +47,11 @@
 #     workBook.save(excelPath)
 #
 # def test_sendNotification():
-#     url = "http://bam.kockpit.in:4001/sendNotifications"
+#     url = baseUrlHeader.baseURL+"/sendNotifications"
 #     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
 #     testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "Blank Title",
-#                  "Blank Body" "All Blank", "Invalid Company Domain", "Invalid UserId"]
+#                  "Blank Body", "Blank Module","Blank Screen", "All Blank", "Invalid Company Domain",
+#                  "Invalid UserId", "", ""]
 #     testcases1 = ["All valid parameter"]
 #     for test in testcases:
 #         print("*************************" + test + "******************************")
@@ -65,17 +66,19 @@
 #         file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\sendNotification.json', 'r')  # open the file in read only mode
 #         json_input = file.read()  # It is in string format so need to convert in json
 #         # Update the data in the json file
-#         json_input = update_content(json_input, "CompanyDomain", testData[0])
+#         json_input = update_content(json_input, "Domain", testData[0])
 #         json_input = update_content(json_input, "UserId", testData[1])
 #         json_input = update_content(json_input, "Title", testData[2])
 #         json_input = update_content(json_input, "Body", testData[3])
+#         json_input = update_content(json_input, "Module", testData[4])
+#         json_input = update_content(json_input, "Screen", testData[5])
 #         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 #
 #         # Make the post request with the json input
-#         response = requests.post(url, request_json)
+#         response = requests.post(url, request_json, headers=baseUrlHeader.headers)
 #         print(response.status_code)
-#         assert response.status_code == int(testData[4])
-#         if response.status_code == int(testData[4]):
+#         #assert response.status_code == int(testData[6])
+#         if response.status_code == int(testData[6]):
 #             write_Excel(excelPath, "sendNotification", test, "Pass:- "+response.text)
 #         else:
 #             write_Excel(excelPath, "sendNotification", test, "Fail-"+response.text)

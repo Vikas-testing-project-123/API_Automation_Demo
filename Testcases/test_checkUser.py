@@ -2,6 +2,7 @@ import requests
 import json
 import jsonpath
 import openpyxl
+import baseUrlHeader
 
 # Read_Excel method is used to read a excel file
 def Read_Excel(excelPath, SheetName, Scenario):
@@ -48,7 +49,7 @@ def write_Excel(excelPath, SheetName, Scenario, status):
     workBook.save(excelPath)
 
 def test_checkUser():
-    url = "http://bam.kockpit.in:4001/checkUser"
+    url = baseUrlHeader.baseURL+"/checkUser"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2", "All valid parameter L3",
                  "Blank UserId", "Blank Company Domain", "All Blank",
@@ -72,7 +73,7 @@ def test_checkUser():
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
-        response = requests.post(url, request_json)
+        response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
         assert response.status_code == int(testData[2])
         if response.status_code == int(testData[2]):

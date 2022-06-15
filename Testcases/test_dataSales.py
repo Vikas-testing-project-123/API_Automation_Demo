@@ -1,6 +1,7 @@
 import requests
 import json
 import openpyxl
+import baseUrlHeader
 
 # Read_Excel method is used to read a excel file
 def Read_Excel(excelPath, SheetName, Scenario):
@@ -47,7 +48,7 @@ def write_Excel(excelPath, SheetName, Scenario, status):
     workBook.save(excelPath)
 
 def test_dataSales():
-    url = "http://bam.kockpit.in:4001/data/Sales"
+    url = baseUrlHeader.baseURL+"/data/Sales"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2", "All valid parameter L3",
                  "Blank UserId", "Blank Level", "Blank Type", "All Blank",
@@ -67,7 +68,7 @@ def test_dataSales():
         file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\dataSales.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
-        json_input = update_content(json_input, "CompanyDomain", testData[0])
+        json_input = update_content(json_input, "Domain", testData[0])
         json_input = update_content(json_input, "UserId", testData[1])
         json_input = update_content(json_input, "Level", testData[2])
         json_input = update_content(json_input, "Type", testData[3])
@@ -75,9 +76,9 @@ def test_dataSales():
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
-        response = requests.post(url, request_json)
+        response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
-        #assert response.status_code == int(testData[5])
+        assert response.status_code == int(testData[5])
         if response.status_code == int(testData[5]):
             write_Excel(excelPath, "dataSales", test, "Pass:- "+response.text)
         else:
