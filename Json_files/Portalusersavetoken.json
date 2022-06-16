@@ -2,6 +2,5 @@
     "UserId": "%%UserId%%",
     "Domain": "%%Domain%%",
     "DeviceId": "%%DeviceId%%",
-	"OfferingCategory": "%%OfferingCategory%%",
     "Token": "%%Token%%"
 }

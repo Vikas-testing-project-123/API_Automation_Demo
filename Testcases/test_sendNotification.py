@@ -51,7 +51,7 @@
 #     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
 #     testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "Blank Title",
 #                  "Blank Body", "Blank Module","Blank Screen", "All Blank", "Invalid Company Domain",
-#                  "Invalid UserId", "", ""]
+#                 ]
 #     testcases1 = ["All valid parameter"]
 #     for test in testcases:
 #         print("*************************" + test + "******************************")

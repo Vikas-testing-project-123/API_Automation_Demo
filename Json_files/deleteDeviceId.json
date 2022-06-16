@@ -1,0 +1,6 @@
+{
+    "Domain": "%%Domain%%",
+    "UserId": "%%UserId%%",
+    "Firebase_Token": "%%Firebase_Token%%",
+    "DeviceId": "%%DeviceId%%"
+}

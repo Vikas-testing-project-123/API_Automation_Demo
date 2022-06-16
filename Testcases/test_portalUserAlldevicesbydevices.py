@@ -52,8 +52,8 @@ def test_portaluseralldevicesbydomain():
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
     testcases = ["All valid parameter", "All valid parameter L1", "All valid parameter L2",
                  "All valid parameter L3",
-                 "Blank UserId", "Blank Company Domain", "Blank Offering", "All Blank",
-                 "Invalid Company Domain", "Invalid UserId", "Invalid Offering", "All Invalid"]
+                 "Blank UserId", "Blank Company Domain", "All Blank",
+                 "Invalid Company Domain", "All Invalid"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
@@ -70,14 +70,14 @@ def test_portaluseralldevicesbydomain():
         # Update the data in the json file
         json_input = update_content(json_input, "UserId", testData[0])
         json_input = update_content(json_input, "Domain", testData[1])
-        json_input = update_content(json_input, "OfferingCategory", testData[2])
+
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
         response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
-        assert response.status_code == int(testData[3])
-        if response.status_code == int(testData[3]):
+        assert response.status_code == int(testData[2])
+        if response.status_code == int(testData[2]):
             write_Excel(excelPath, "portalUseralldevicebydomain", test, "Pass:- "+response.text)
         else:
             write_Excel(excelPath, "portalUseralldevicebydomain", test, "Fail-"+response.text)

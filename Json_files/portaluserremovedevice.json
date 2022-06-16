@@ -1,7 +1,6 @@
 {
     "UserId": "%%UserId%%",
     "Domain": "%%Domain%%",
-    "DeviceId": "%%DeviceId%%",
-	"OfferingCategory": "%%OfferingCategory%%"
+    "DeviceId": "%%DeviceId%%"
 
 }

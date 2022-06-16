@@ -68,7 +68,7 @@ def test_checkUser():
         file = open('C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\Json_files\\Check_User.json', 'r')  # open the file in read only mode
         json_input = file.read()  # It is in string format so need to convert in json
         # Update the data in the json file
-        json_input = update_content(json_input, "CompanyDomain", testData[0])
+        json_input = update_content(json_input, "Domain", testData[0])
         json_input = update_content(json_input, "UserId", testData[1])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 

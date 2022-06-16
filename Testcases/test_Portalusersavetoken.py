@@ -50,12 +50,10 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_Portalusersavetoken():
     url = baseUrlHeader.baseURL+"/portal/user/saveToken"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter","All valid parameter L1","All valid parameter L2","All valid parameter L3",
-                 "Blank UserId", "Blank Company Domain", "Blank DeviceId", "Blank Offering",
+    testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "Blank DeviceId",
                  "Blank Token",
                  "All Blank",
-                 "Invalid Company Domain", "Invalid UserId", "Invalid Offering", "Invalid DeviceId",
-                 "Invalid Token","All Invalid"]
+                 "Invalid Company Domain","All Invalid"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")
@@ -73,15 +71,15 @@ def test_Portalusersavetoken():
         json_input = update_content(json_input, "UserId", testData[0])
         json_input = update_content(json_input, "Domain", testData[1])
         json_input = update_content(json_input, "DeviceId", testData[2])
-        json_input = update_content(json_input, "OfferingCategory", testData[3])
-        json_input = update_content(json_input, "Token", testData[4])
+        # json_input = update_content(json_input, "OfferingCategory", testData[3])
+        json_input = update_content(json_input, "Token", testData[3])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
         # Make the post request with the json input
         response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
-        #assert response.status_code == int(testData[5])
-        if response.status_code == int(testData[5]):
+        assert response.status_code == int(testData[4])
+        if response.status_code == int(testData[4]):
             write_Excel(excelPath, "Portalusersavetoken", test, "Pass:- "+response.text)
         else:
             write_Excel(excelPath, "Portalusersavetoken", test, "Fail-"+response.text)

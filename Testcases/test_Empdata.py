@@ -51,8 +51,8 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_Empdata():
     url = baseUrlHeader.baseURL+"/empData"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank UserID L1", "Blank UserId", "Blank Domain", "All Blank",
-                 "All Invalid", "Invalid UserId", "Invalid Domain"]
+    testcases = ["All valid parameter", "Blank UserId", "Blank Domain", "All Blank",
+                 "All Invalid", "Invalid Domain"]
     testcases1 = ["All valid parameter"]
     for test in testcases:
         print("*************************" + test + "******************************")

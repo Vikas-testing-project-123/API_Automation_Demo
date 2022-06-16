@@ -51,9 +51,9 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_markedAllRead():
     url = baseUrlHeader.baseURL+"/markedAllRead"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter", "Blank UserId", "Blank Company Domain", "All Blank",
-                 "Invalid Company Domain", "Invalid UserId", "All Invalid", "Blank Isread"]
-    testcases1 = ["All valid parameter"]
+    testcases = [ "Blank UserId", "Blank Company Domain", "All Blank",
+                 "Invalid Company Domain", "All Invalid", "Blank Isread"]
+    testcases1 = ["Blank UserId"]
     for test in testcases:
         print("*************************" + test + "******************************")
         testData = Read_Excel(excelPath, "MarkedAllRead", test)

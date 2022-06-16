@@ -1,6 +1,5 @@
 {
   "UserId" : "%%UserId%%",
-  "Domain" : "%%Domain%%",
-  "OfferingCategory": "%%OfferingCategory%%"
+  "Domain" : "%%Domain%%"
 }
 
