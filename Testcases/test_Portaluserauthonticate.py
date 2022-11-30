@@ -50,7 +50,7 @@ def write_Excel(excelPath, SheetName, Scenario, status):
 def test_Portaluserauthonticate():
     url = baseUrlHeader.baseURL+"/portal/user/authenticate"
     excelPath = "C:\\Users\\TA0134\\PycharmProjects\\API_Testing\\TestData\\UserLogin.xlsx"
-    testcases = ["All valid parameter","All valid parameter L1", "All valid parameter L2", "All valid parameter L3" ,
+    testcases = ["All valid parameter", "All valid parameter L2", "All valid parameter L3" ,
                  "Blank Company Domain", "Blank UserId", "Blank Password", "Blank DeviceId", "All Blank",
                  "Invalid Company Domain", "Invalid UserId", "Invalid Password", "All Invalid"]
     testcases1 = ["All valid parameter"]

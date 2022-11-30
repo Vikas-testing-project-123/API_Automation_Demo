@@ -76,7 +76,7 @@ def test_getsessionbyuser():
         if response.status_code == int(testData[1]):
             write_Excel(excelPath, "getsessionbyuser", test, "Pass:- "+response.text)
         else:
-            write_Excel(excelPath, "getsessionbyuser", test, "Fail-"+response.text)
+            write_Excel(excelPath,  "getsessionbyuser", test, "Fail-"+response.text)
 
         # Get the values of the json file provided and validate the fields
 

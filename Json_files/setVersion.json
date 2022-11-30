@@ -1,5 +1,7 @@
 {
     "Domain": "%%Domain%%",
     "Version": "%%Version%%",
-	"FeatureList": "%%FeatureList%%"
+    "Old": "%%Old%%",
+    "Force": "%%Force%%",
+    "FeatureList": "%%FeatureList%%"
 }

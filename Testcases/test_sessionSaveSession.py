@@ -71,7 +71,7 @@ def test_sessionSaveSession():
         json_input = update_content(json_input, "EmailId", testData[2])
         request_json = json.loads(json_input)  # json.loads we use to convert in json format
 
-        # Make the post request with the json input
+        # Make the post request with th e json input
         response = requests.post(url, request_json, headers=baseUrlHeader.headers)
         print(response.status_code)
         assert response.status_code == int(testData[3])
